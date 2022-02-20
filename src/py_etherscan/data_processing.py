@@ -56,6 +56,7 @@ def map_result(
 RESULT_MAPPING = {
     # date
     'timestamp': unix_to_datetime,
+    'timeStamp': unix_to_datetime,
     'ethbtc_timestamp': unix_to_datetime,
     'ethusd_timestamp': unix_to_datetime,
     'chainTimeStamp': str_to_datetime,
@@ -81,6 +82,8 @@ RESULT_MAPPING = {
     'traceId': smart_int,
     'errCode': smart_int,
     'tokenDecimal': smart_int,
+    'tokenId': smart_int,
+    'tokenID': smart_int,
     'unclePosition': smart_int,
     'TotalNodeCount': smart_int,
     'Runs': smart_int,

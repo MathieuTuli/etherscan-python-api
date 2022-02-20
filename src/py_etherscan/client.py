@@ -24,6 +24,8 @@ class Client:
             self.http_session.close()
             raise e
 
+        url = endpoint.url.replace(
+            '&', '\n    &').replace('?', '?\n    ')
         if response.status_code == 200:
             if response.text:
                 endpoint.process(response.json())
@@ -33,10 +35,12 @@ class Client:
                         endpoint.result == "Invalid API Key":
                     raise InvalidAPIKey(endpoint.result)
                 else:
-                    url = endpoint.url.replace(
-                        '&', '\n    &').replace('?', '?\n    ')
                     raise EmptyResponse(
                         "Something went wrong. Check url parameters: " +
                         f"URL: \n{url}\n{endpoint.url}")
+        import pdb
+        pdb.set_trace()
         raise requests.exceptions.RequestException(
-            f"Response errored, status code: {response.status_code}")
+            f"Response errored, status code: {response.status_code}: " +
+            "Check url parameters: " +
+            f"URL: \n{url}\n{endpoint.url}")

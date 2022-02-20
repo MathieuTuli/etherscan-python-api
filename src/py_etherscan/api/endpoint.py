@@ -22,6 +22,7 @@ URL_DEFAULTS = {
     'blocktype': ['blocks', 'uncles'],
     'syncmode': ['default', 'archive'],
     'tag': ['latest', 'earliest', 'pending'],
+    'contractaddress': [None]
 }
 
 
@@ -37,13 +38,19 @@ class Endpoint:
             raise ValueError(
                 "Endpoints must be called with named arguments. " +
                 "For Example, 'Endpoint(address=0x..., key=999..)'")
-        for default, values in URL_DEFAULTS.items():
-            if default not in kwargs:
-                kwargs[default] = values[0]
+        for default_key, values in URL_DEFAULTS.items():
+            if default_key in self.url and default_key not in kwargs and \
+                    values[0] is None:
+                lb = '{'
+                rb = '}'
+                self.url = self.url.replace(
+                    f'&{default_key}={lb}{default_key}{rb}', '')
+            elif default_key not in kwargs:
+                kwargs[default_key] = values[0]
             else:
-                if len(values) > 1 and kwargs[default] not in values:
+                if len(values) > 1 and kwargs[default_key] not in values:
                     raise ValueError(
-                        f"{default} option must be one of {values}")
+                        f"{default_key} option must be one of {values}")
         self.url = self.url.replace('\n', '').replace(' ', '').format(**kwargs)
 
     def process(self, response: Dict) -> None:
