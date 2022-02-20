@@ -8,7 +8,6 @@ class BlockReward(Endpoint):
     https://api.etherscan.io/api
        ?module=block
        &action=getblockreward
-       &address={address}
        &blockno={blockno}
        &apikey={key}
     """
@@ -19,7 +18,6 @@ class BlockCountdown(Endpoint):
     https://api.etherscan.io/api
        ?module=block
        &action=getblockcountdown
-       &address={address}
        &blockno={blockno}
        &apikey={key}
     """

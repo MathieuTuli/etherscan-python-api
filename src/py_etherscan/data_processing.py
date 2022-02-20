@@ -102,6 +102,7 @@ RESULT_MAPPING = {
     # wei to eth
     'maxFeePerGas': wei_to_eth,
     'gasPrice': wei_to_eth,
+    'blockreward': wei_to_eth,
     'maxPriorityFeePerGas': wei_to_eth,
     'blockReward': wei_to_eth,
     'uncleInclusionReward': wei_to_eth,

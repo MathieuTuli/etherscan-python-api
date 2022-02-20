@@ -41,7 +41,7 @@ class Endpoint:
             if default not in kwargs:
                 kwargs[default] = values[0]
             else:
-                if kwargs[default] not in values:
+                if len(values) > 1 and kwargs[default] not in values:
                     raise ValueError(
                         f"{default} option must be one of {values}")
         self.url = self.url.replace('\n', '').replace(' ', '').format(**kwargs)

@@ -37,6 +37,6 @@ class Client:
                         '&', '\n    &').replace('?', '?\n    ')
                     raise EmptyResponse(
                         "Something went wrong. Check url parameters: " +
-                        f"URL: \n{url}")
+                        f"URL: \n{url}\n{endpoint.url}")
         raise requests.exceptions.RequestException(
             f"Response errored, status code: {response.status_code}")
