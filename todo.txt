@@ -1,0 +1,6 @@
+- POST api (contracts)
+- Add PRO GETs
+- general 'null' to None in responses (eth_getTransactionByBlockNumberAndIndex)
+- tag latest to optional
+- default formats
+- proxy result maps
